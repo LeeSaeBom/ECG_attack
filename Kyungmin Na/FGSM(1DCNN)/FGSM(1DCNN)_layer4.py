@@ -25,8 +25,8 @@ class ECGDataset(Dataset):
 
             # 전처리()
             data = data.iloc[:, 2:].values.astype(np.float32)
-            data = np.expand_dims(data, axis=0)  # Add batch dimension
-            data = np.transpose(data, axes=(0, 2, 1))  # Transpose to (batch, channel, sequence_length)
+            data = np.expand_dims(data, axis=0)
+            data = np.transpose(data, axes=(0, 2, 1))
 
             # Append data and label
             self.data.append(data)
@@ -141,7 +141,7 @@ for epsilon in epsilons:
         predicted_labels.extend(predicted.cpu().numpy())
 
     accuracy = accuracy_score(true_labels, predicted_labels)
-    f1 = f1_score(true_labels, predicted_labels, average='weighted')  # Update the average parameter to 'weighted'
+    f1 = f1_score(true_labels, predicted_labels, average='weighted')
     print(f"Epsilon: {epsilon}, Accuracy: {accuracy:.4f}%, F1-Score: {f1:.4f}")
     results_file.write(f"Epsilon: {epsilon}, Accuracy: {accuracy:.4f}%, F1-Score: {f1:.4f}\n")
 
