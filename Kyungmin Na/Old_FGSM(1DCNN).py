@@ -1,3 +1,4 @@
+#The code is not functioning properly. Please move to FGSM(1DCNN).py
 import os
 import glob
 import numpy as np
